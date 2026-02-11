@@ -1,50 +1,743 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon | Festival 2026</title>
+    <title>Camrose Blues Festival - Official Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        :root {
+            --color-primary: #0F3B60;
+            --color-dark-alt: #1F2937;
+            --color-accent: #f90;
+            --color-text-light: #F9FAFB;
+        }
+
         body {
-            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            background-color: white;
+            color: #1F2937;
+            -webkit-font-smoothing: antialiased;
         }
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            max-width: 90%;
-        }
-        h1 { font-size: 3rem; margin-bottom: 1rem; letter-spacing: 2px; }
-        p { font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem; }
-        .badge {
-            display: inline-block;
-            background: #00d2ff;
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
+
+        .font-heading {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .text-accent { color: var(--color-accent); }
+        .bg-accent { background-color: var(--color-accent); }
+        .bg-primary { background-color: var(--color-primary); }
+        .bg-dark-alt { background-color: var(--color-dark-alt); }
+
+        .btn-cta {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+        }
+
+        .btn-cta:hover {
+            background-color: #FBBF24;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover { color: var(--color-accent); }
+        .modal-open { overflow: hidden; }
+        
+        @keyframes pulse-border {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        .pulse::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: var(--color-accent);
+            border-radius: 9999px;
+            z-index: -1;
+            animation: pulse-border 2s infinite;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="badge">Under Construction</div>
-        <h1>Camrose Blues Festival 2026</h1>
-        <p>We're currently tuning the instruments and setting up the microphones and amps. Check back soon for the full lineup!</p>
+
+<body class="bg-white">
+
+    <a href="https://baileytheatre.com" target="_blank" class="md:hidden fixed bottom-6 right-6 z-[60] bg-accent text-primary w-16 h-16 rounded-full flex items-center justify-center shadow-2xl pulse">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+        </svg>
+    </a>
+
+    <header id="home" class="sticky top-0 z-50 bg-primary shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="flex items-center space-x-3 group">
+                        <img src="logo.png" alt="Camrose Blues Festival Logo" class="h-14 w-14 rounded-full border-2 border-accent group-hover:scale-105 transition-transform">
+                        <span class="font-heading text-xl md:text-2xl font-bold text-accent tracking-wider">CAMROSE BLUES FESTIVAL</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#lineup" class="nav-link text-white">Lineup</a>
+                    <a href="#schedule" class="nav-link text-white">Schedule</a>
+                    <a href="#history" class="nav-link text-white">History</a>
+                    <a href="#faq" class="nav-link text-white">FAQ</a>
+                    <a href="#contact" class="nav-link text-white">Contact</a>
+                </nav>
+                <a style="display: none;" href="https://baileytheatre.com" target="_blank" class="hidden md:block btn-cta py-2 px-5 rounded-md text-sm uppercase tracking-wide">Tickets</a>
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-primary border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 flex flex-col items-start">
+                <a href="#lineup" class="nav-link text-white block px-3 py-2">Lineup</a>
+                <a href="#schedule" class="nav-link text-white block px-3 py-2">Schedule</a>
+                <a href="#history" class="nav-link text-white block px-3 py-2">History</a>
+                <a href="#faq" class="nav-link text-white block px-3 py-2">FAQ</a>
+                <a href="#contact" class="nav-link text-white block px-3 py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-[75vh] flex items-center justify-center text-center overflow-hidden bg-gray-900">
+        <div class="absolute inset-0">
+            <img src="banner.jpg" alt="Bailey Theatre stage" class="w-full h-full object-cover opacity-50">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+        <div class="relative z-10 p-6 max-w-4xl mx-auto">
+            <img src="logo.png" alt="Official Logo" class="w-32 h-32 md:w-48 md:h-48 mx-auto mb-8 rounded-full border-4 border-accent shadow-2xl bg-white p-1">
+            <h1 class="font-heading text-5xl sm:text-7xl font-bold tracking-wide text-white">CAMROSE <span class="text-accent">BLUES</span> FESTIVAL</h1>
+            <p class="mt-4 text-xl text-gray-200 font-light">JULY 17-19, 2026 | THE BAILEY THEATRE</p>
+            <div class="mt-8">
+                <a href="#" target="_self" class="btn-cta text-lg py-3 px-10 rounded-lg uppercase tracking-wider shadow-lg inline-block" >Tickets available soon</a>
+            </div>
+        </div>
+    </section>
+<section id="about" class="py-16 sm:py-24 bg-primary text-text-light">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-heading text-4xl font-bold mb-4 text-accent">About the Festival</h2>
+            <p class="max-w-3xl mx-auto text-xl leading-relaxed text-gray-300 font-light">
+                The Camrose Blues Festival is more than just a concert; it's a celebration of the raw, electric heart of
+                blues music, set within the stunning, acoustically perfect confines of the historic Bailey Theatre. For our second year, we've brought together legendary performers and rising stars to deliver an unforgettable
+                weekend. Join us for a deep dive into the roots of Canadian & American music, surrounded by a vibrant community of
+                fellow enthusiasts.
+            </p>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="font-heading text-xl font-bold text-accent mb-2">The Vibe</h3>
+                    <p class="text-gray-300 font-light">Intimate, soulful, and historic. Experience the blues in a venue
+                        where every note resonates with history.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="font-heading text-xl font-bold text-accent mb-2">Community</h3>
+                    <p class="text-gray-300 font-light">A non-profit festival committed to supporting local musicians,
+                        artists, and the preservation of the Bailey Theatre.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="font-heading text-xl font-bold text-accent mb-2">The Blues</h3>
+                    <p class="text-gray-300 font-light">As a truly timeless art form, the blues continues to move hearts and inspire artists worldwide with its profound emotional depth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="lineup" class="py-16 bg-dark-alt">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-heading text-4xl font-bold text-center mb-12 text-white">The 2026 Lineup</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-gray-700 rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+                    <img src="olle.jpg" alt="Ollee Owens" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-1">Ollee Owens</h3>
+                            <p class="text-gray-300 text-sm mb-4">Prairie-born singer-songwriter whose rootsy music blends deep authenticity.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <button class="open-modal btn-cta py-2 px-4 rounded-md text-sm uppercase" data-title="Ollee Owens" data-content="bio-ollee">Read Bio</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+                    <img src="donald.jpg" alt="Donald Ray Johnson" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-1">Donald Ray Johnson</h3>
+                            <p class="text-gray-300 text-sm mb-4">Texas-born, Grammy-winning blues veteran whose career spans global stages.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <button class="open-modal btn-cta py-2 px-4 rounded-md text-sm uppercase" data-title="Donald Ray Johnson" data-content="bio-donald">Read Bio</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+                    <img src="jack.jpg" alt="Jack Semple" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-1">Jack Semple</h3>
+                            <p class="text-gray-300 text-sm mb-4">Saskatchewan-born, Juno Award–winning guitarist whose “modern blues” blends virtuosic guitar.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <button class="open-modal btn-cta py-2 px-4 rounded-md text-sm uppercase" data-title="Jack Semple" data-content="bio-jack">Read Bio</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+                    <img src="harry.jpg" alt="Harry Manx" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-1">Harry Manx</h3>
+                            <p class="text-gray-300 text-sm mb-4">“Mysticssippi” blues artist whose slide guitar seamlessly fuses blues grooves with Indian ragas.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <button class="open-modal btn-cta py-2 px-4 rounded-md text-sm uppercase" data-title="Harry Manx" data-content="bio-harry">Read Bio</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+                    <img src="andrewm.jpg" alt="Andrew Michael Blues Band" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-1">Andrew Michael Band</h3>
+                            <p class="text-gray-300 text-sm mb-4">High-energy Fraser Valley blues-rock outfit delivering electrifying originals.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <button class="open-modal btn-cta py-2 px-4 rounded-md text-sm uppercase" data-title="Andrew Michael Band" data-content="bio-andrew">Read Bio</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+                    <img src="brandon.jpg" alt="Brandon Isaak" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-1">Brandon Isaak Band</h3>
+                            <p class="text-gray-300 text-sm mb-4">Yukon-born world-class roots and blues showman known for heartfelt songs.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <button class="open-modal btn-cta py-2 px-4 rounded-md text-sm uppercase" data-title="Brandon Isaak Band" data-content="bio-brandon">Read Bio</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+                    <img src="samantha.jpg" alt="Samantha King Band" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-1">Samantha King Band</h3>
+                            <p class="text-gray-300 text-sm mb-4">Edmonton’s dynamo blues voice and 2025 Juno Award Nominee.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <button class="open-modal btn-cta py-2 px-4 rounded-md text-sm uppercase" data-title="Samantha King Band" data-content="bio-samantha">Read Bio</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+                    <img src="russell.jpg" alt="Russell Jackson Band" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-1">Russell Jackson Band</h3>
+                            <p class="text-gray-300 text-sm mb-4">The "Groove Guru" and former B.B. King Orchestra bassist.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <button class="open-modal btn-cta py-2 px-4 rounded-md text-sm uppercase" data-title="Russell Jackson Band" data-content="bio-russell">Read Bio</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+                    <img src="graham.jpg" alt="Graham Guest" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-white mb-1">Graham Guest Trio</h3>
+                            <p class="text-gray-300 text-sm mb-4">Edmonton Blues Hall of Fame inductee and versatile multi-instrumentalist.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <button class="open-modal btn-cta py-2 px-4 rounded-md text-sm uppercase" data-title="Graham Guest" data-content="bio-graham">Read Bio</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="font-heading text-2xl font-bold mb-8 text-primary">Sponsors</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                <div>
+                    <img src="montecarlo.png" alt="Monte Carlo" class="w-[200px] h-auto">
+                </div>
+                <div>
+                    <img src="meridian.png" alt="Meridian" class="w-[200px] h-auto">
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </section>
+<section id="kickoff" class="py-20 bg-[#FBBF24]">
+           <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="font-heading text-4xl text-center mb-6 text-primary">July 16 Festival Kickoff Party</h2>
+            <p class="text-lg font-light mb-8">
+                Join us on Thursday, July 16th at The Bailey Theatre for a Kick Off Party featuring live performances by local bands. Pay what you feel!
+            </p>
+            
+            <div class="space-y-3">
+                <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">6:30 PM</div>
+                    <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Doors Open</div>
+                </div>
+                <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">7:30 PM</div>
+                    <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Rose City Rollers</div>
+                </div>
+                <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">8:50 PM</div>
+                    <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Godfrey Blaque</div>
+                </div>
+            </div>
+        </div>
+</section>
+
+    <section id="schedule" class="py-20 bg-[#0F3B60]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-heading text-4xl text-center mb-16 text-[#F90]">Festival Schedule</h2>
+
+            
+            <div class="space-y-16">
+                
+                <div>
+                    <h3 class="font-heading text-2xl text-white mb-6 pl-4 border-l-4 border-[#F90]">Friday, July 17</h3>
+                    <div class="space-y-3">
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">5:00 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Doors Open</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">6:00 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Ollee Owens Band</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">7:20 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Donald Ray Johnson Band</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">8:50 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Jack Semple Band</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">10:10 PM</div>
+                            <div class="px-6 py-4 flex flex-col justify-center">
+                                <span class="font-bold text-[#0F3B60] text-lg uppercase">"The Thrill Ain't Gone"</span>
+                                <span class="text-sm text-gray-500 italic">B.B. King Tribute</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-heading text-2xl text-white mb-6 pl-4 border-l-4 border-[#F90]">Saturday, July 18</h3>
+                    <div class="space-y-3">
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">1:00 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Doors Open</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">2:00 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Harry Manx (Solo)</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">3:20 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Andrew Michael Band</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 italic">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">4:40 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#666] text-lg">Dinner Break (2 Hours)</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">6:40 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Brandon Isaak Band</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">8:00 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Samantha King Band</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">9:30 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Russell Jackson Band</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-heading text-2xl text-white mb-6 pl-4 border-l-4 border-[#F90]">Sunday, July 19</h3>
+                    <div class="space-y-3">
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">10:00 AM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Doors Open & Brunch</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">11:00 AM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Graham Guest Trio (Set 1)</div>
+                        </div>
+                        <div class="schedule-card flex bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300">
+                            <div class="bg-[#DDD] text-[#0F3B60] font-bold px-6 py-4 flex items-center justify-center min-w-[120px]">12:00 PM</div>
+                            <div class="px-6 py-4 flex items-center font-bold text-[#0F3B60] text-lg uppercase">Graham Guest Trio (Set 2)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="py-16 bg-dark-alt text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="font-heading text-3xl text-center mb-10 text-accent">What Fans Are Sayings </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 italic" id="testimonials-container"></div>
+
+            <script>
+                const testimonials = [
+                    { quote: "What an amazing event last night! We thoroughly enjoyed it, wish we could've stayed for the entire weekend", author: "Greg O." },
+                    { quote: "Wow what a fun, blues filled festival. And what about The Bailey? An incredible venue with such a history. So appropriate for a blues festival", author: "Cathie H." },
+                    { quote: "Camrose blues festival. Awesome room to host blues events, friendly atmosphere. Very friendly, helpful staff. Buy your tickets early cause it will sell out. See you there", author: "Wayne T." },
+                    { quote: "For a small city, it was the best indoor blues festival we've ever been to, well done Camrose!", author: "Curt S." },
+                    { quote: "We really enjoyed our weekend at the Camrose Blues festival, already looking forward to a second one. The venue is such an intimate size", author: "Tracy B." },
+                    { quote: "It is a must-visit for blues purists who value sound quality and a comfortable, historical setting over the muddy chaos of larger festival", author: "Karl S." },
+                    { quote: "The Cats were noodling and jamming as their axes vibed and burned. A smokin weekend that filled my soul with memories and music", author: "Monique J." }
+                ];
+
+                function displayRandomTestimonials() {
+                    const container = document.getElementById('testimonials-container');
+                    const shuffled = testimonials.sort(() => 0.5 - Math.random()).slice(0, 3);
+                    
+                    container.innerHTML = shuffled.map(t => `
+                        <div class="bg-gray-800 p-6 rounded shadow-lg border-l-4 border-accent">
+                            "${t.quote}" 
+                            <span class="font-bold text-accent not-italic block mt-2">— ${t.author}</span>
+                        </div>
+                    `).join('');
+                }
+
+                displayRandomTestimonials();
+            </script>
+        </div>
+    </section>
+
+    <section id="history" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-heading text-4xl font-bold text-center mb-8 text-primary">Our History</h2>
+            <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <p>Back in November of 2024 a small group of like-minded Camrose fans and musicians of blues music started to discuss the idea of Camrose hosting an all-Canadian Blues Festival at the fabulous, historical Bailey Theatre in the heart of downtown Camrose.</p>
+                <p>Our inaugural committee meeting was held in early January 2025. All the committee members are supporters of the Bailey on so many levels. It was decided that the festival be named The Camrose Blues Festival, and any proceeds from the festival be it fiscal, or promotional be directed to The Bailey Theatre Society.</p>
+                <p>The Bailey Theatre is the oldest theatre in Alberta having been built in 1911. Recently it underwent a major restoration and is now the hub of the community's artistic endeavors and is noted for its spectacular acoustics.</p>
+                <p>It's the festival's intention to promote, foster, support, and celebrate the fantastic gift of blues music throughout our country and the world. We positively strive to Keep The Blues Alive.</p>
+                <p class="font-heading text-2xl font-bold text-primary mb-4">Organizing Committee</p>
+                <p class="mt-8">
+                    
+                    <img src="bluescommittee.jpg" alt="Camrose Blues Festival Committee - Left to Right: Elliot Harder (Bailey Theatre Manager), Jane Cherry, Robert Renman, Kelly Olafson, John Person, Barb Stroh, David Roth. Not in photo: Chris Rebus, Roxane Renman and Jan Nowakowski" class="w-full rounded-lg shadow-lg">
+                    <p class="text-sm text-gray-600 mt-2">
+                        <strong>Left to Right:</strong> Elliot Harder (Bailey Theatre Manager), Jane Cherry, Robert Renman, Kelly Olafson, John Person, Barb Stroh, David Roth<br>
+                        <strong>Not in photo:</strong> Chris Rebus, Roxane Renman, Jan Nowakowski
+                    </p>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-16 bg-gray-100">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="font-heading text-4xl font-bold text-center mb-10 text-primary">FAQ</h2>
+            <div class="space-y-4">
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Is the festival an all ages event? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">Yes. The Camrose Blues Festival is a family friendly event and is open to music lovers of all ages</p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Can I buy alcoholic beverages at the festival? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">Yes. Alcoholic beverages are available for purchase via drink tickets inside the theatre. There is a bar inside the auditorium as well as in the Spotlight Bistro.</p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Where do I buy tickets? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">Tickets are available at the Bailey Theatre Box office, the <a href="https://baileytheatre.com" target="_blank" class="text-accent hover:text-yellow-300 underline">Bailey Theatre website</a> and also through the <a href="https://camrosebluesfestival.ca" target="_blank" class="text-accent hover:text-yellow-300 underline">festival's website</a></p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">I can't attend the entire festival (boo!), may I buy individual day tickets? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">We energetically encourage you to purchase tickets for the entire weekend, so you will experience the overall vibe! However, we understand it may not be possible. So yes, individual day passes will be available once the weekend passes have been on sale.</p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Is there reserved seating? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">Yes. In fact all seats will be reserved, which means no hassles with line ups, rushing to get your preferred seats, having to arrive extra early, leaving for an extended period? No problem, your seat will be there for you when you return.</p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Where can I stay? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">Camrose has many options for overnight accommodation. The festival's sponsored hotel is Days Inn & Conference Centre by Wyndham Camrose Norsemen, <a href="https://noresmeninn.com" target="_blank" class="text-accent hover:text-yellow-300 underline">noresmeninn.com</a>. Camrose offers several other hotels, Bed and Breakfasts, and Airbnb's. Camrose also has a full service RV park. Information and booking can be found at <a href="https://camroservpark.com" target="_blank" class="text-accent hover:text-yellow-300 underline">camroservpark.com</a></p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Where should I park? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">You can park anywhere downtown on Friday evening (after 6pm) and on Sunday (all day). On Saturday however parking downtown is limited to 2 hours. Extended parking can be found at two lots - on a block east at 49 St & 51 Ave. (next to The Brick) and the other a block west of main street on 51 St and 51 Ave. Both lots are within an easy walking distance to the Bailey.</p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Will there be merchandise like artists CD's, t-shirts etc? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">Yes. Artists will have cd's and merch available for purchase. The Camrose Blues Festival will also be selling T-Shirts and sunglasses.</p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Is there a smoking section? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">Smoking is not allowed inside the Bailey Theatre. The City of Camrose by law states that smoking is prohibited within 5 metres of the entrance to the theatre.</p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Can I make a donation to the festival? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">Yes and please do! We are a non for profit festival. All proceeds go to the non for profit Bailey Theatre Society. You will be the lucky recipient of an official tax receipt and a proud dynamo of keeping the blues alive. Donations may be made at bailey box office or online at <a href="https://baileytheatre.com" target="_blank" class="text-accent hover:text-yellow-300 underline">baileytheatre.com</a></p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Can I buy food at  the festival? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">Yes. There is The Spotlight Bistro located inside of the Bailey. There will also be a food truck and coffee truck located right outside the theatre's doors. Camrose also offers a vast array of eateries and restaurants where you can enjoy a meal.</p>
+                </details>
+
+                <details class="group bg-white rounded p-4 shadow cursor-pointer">
+                    <summary class="font-bold flex justify-between items-center list-none">Is there public transportation in Camrose? <span class="transition-transform group-open:rotate-180">▼</span></summary>
+                    <p class="mt-4 text-gray-600">The City of Camrose offers a free community bus. Please visit <a href="https://camrose.ca" target="_blank" class="text-accent hover:text-yellow-300 underline">camrose.ca</a> under Popular Services you will find Transit. Here you will discover information regarding pick up/drop off locations and schedules. Camrose also has taxi services available.</p>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-primary text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <h3 class="font-heading text-2xl mb-6">Send Us a Message</h3>
+                    <form action="https://formspree.io/f/mqelbaka"
+  method="POST" class="space-y-4">
+                        <input name="name" type="text" placeholder="Full Name" class="w-full bg-gray-700 border-none p-3 rounded text-white">
+                        <input name="email" type="email" placeholder="Email" class="w-full bg-gray-700 border-none p-3 rounded text-white">
+                        <textarea placeholder="Your Inquiry" name="message"rows="4" class="w-full bg-gray-700 border-none p-3 rounded text-white"></textarea>
+                        <button class="btn-cta w-full py-3 rounded uppercase font-bold tracking-widest">Submit</button>
+                    </form>
+                </div>
+                <div>
+                    <h3 class="font-heading text-2xl text-white mb-4">Venue Location</h3>
+                    <p class="text-gray-300 mb-6">The Bailey Theatre<br>5041 50th Street, Camrose, AB T4V 1R3</p>
+                    
+                    <div class="h-64 bg-gray-800 rounded mb-8 overflow-hidden shadow-inner border border-gray-700">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            src="https://maps.google.com/maps?q=The%20Bailey%20Theatre%20Camrose&t=&z=15&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                    </div>
+
+                    <h3 class="font-heading text-2xl text-white mb-2">General Inquiries</h3>
+                    <p style="display: none;" class="text-accent underline font-bold"><a href="mailto:jp@camrosebluesfestival.ca">jp@camrosebluesfestival.ca</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-primary py-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <img src="logo.png" alt="Logo" class="w-24 h-24 mx-auto mb-6 rounded-full opacity-70 grayscale hover:grayscale-0 transition-all duration-300">
+        
+        <div class="flex justify-center space-x-8 mb-8">
+            <a href="https://facebook.com/camrosebluesfestival/" target="_blank" aria-label="Follow us on Facebook" 
+               class="text-white hover:text-[#FFD717] transition-all transform hover:scale-110">
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                </svg>
+            </a>
+
+            <a href="https://instagram.com/camrosebluesfestival/" target="_blank" aria-label="Follow us on Instagram" 
+               class="text-white hover:text-[#FFD717] transition-all transform hover:scale-110">
+                <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                </svg>
+            </a>
+        </div>
+
+        <p class="text-gray-500 text-sm tracking-widest uppercase">
+            &copy;  Camrose Blues Festival. All Rights Reserved.
+        </p>
     </div>
+
+        
+    </footer>
+
+    <div id="bio-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div class="bg-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 relative border border-gray-600">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">✕</button>
+            <h2 id="modal-title" class="font-heading text-3xl text-accent mb-6">Artist Bio</h2>
+            <div id="modal-content" class="text-gray-300 leading-relaxed text-lg"></div>
+        </div>
+    </div>
+
+    <div class="hidden">
+
+    <div id="bio-ollee">
+        <div class="artist-container" id="ollee-owens">
+            <h2>Ollee Owens</h2>
+            <p>Raised in the Canadian Prairies, music was always around Owens growing up. Artists such as Elvis, Odetta, The Band, Mavis Staples, Bonnie Raitt and Bob Dylan were formative in her teen years. But more than just listening, she took comfort in writing her own songs, seeing music as a way to process the chaotic nature of life and give visibility to her own feelings. And even when Owens took a 15-year respite in order to raise a family, she never fully put a cap on her passion for music, volunteering as a music therapist, occasionally performing, and always continuing to write songs.</p>
+            <p>Since 2015, Ollee has shared stages across the Canadian Prairies and as far south as Memphis with artists like Matt Anderson, Blue Moon Marquee, Tim Williams, Albert Castiglia and Dawn Tyler Watson. Owens started 2025 with a dynamic set at the legendary BB Kings in Memphis, TN and spent the summer playing shows and festivals from Saskatoon to Vancouver Island. She plans to continue touring stages and festivals across Canada and Internationally, making new friends and fans wherever she goes.</p>
+            <p>“Music does so much more than entertain,” Owens says, ” It gives a voice to a wide breadth of experiences and feelings, touching those looking for a connection. It has the power to heal wounds and be a welcoming source of light and comfort in the darkness.” It’s for all those reasons and more that Ollee Owens keeps singing, lighting the path for her fellow travellers.</p>
+            <p>Ollee’s music continues to set her intentions as a talented artist who deals in authenticity, openness, and honesty paving the way for a lasting musical connection.</p>
+            <p><a href="https://www.olleeowens.com" target="_blank" class="text-accent hover:text-yellow-300">www.olleeowens.com</a></p>
+        </div>
+    </div>
+
+    <div id="bio-donald">
+        <div class="artist-container" id="donald-ray-johnson">
+            <h2>Donald Ray Johnson</h2>
+            <p>Over the course of his five-decade career, Texas-born Donald Ray Johnson – Grammy Award winner and five-time Maple Blues Award nominee, has performed across North America, Europe and Asia, including at the prestigious Madison Square Gardens and Chicago’s Soldier Field.</p>
+            <p>Donald Ray grew up near the cotton fields of Bryan, Texas, where as a young teen he would secretly hide side stage at the local club and listen to legends such as Freddie King, Albert Collins and Johnny Copeland. At age 14, Donald Ray borrowed a drum set and began playing professionally at local juke joints (with pianist Nat Dove, organist Joe Daniels and guitarist Lavernis Thurman), and at live radio shows. It wasn’t till he finished two naval tours during the Vietnam War that he could buy his own kit.</p>
+            <p>A Taste of Honey’s self-titled debut album and single, Boogie-Oogie-Oogie went platinum, and the album garnered them the 1979 Grammy Award for “Best New Artist,” the first African American band to ever win the award. They also performed their hit single live that same evening. The group disbanded after releasing only a few albums, and Donald Ray struck out on his own, returning to his roots as a bluesman.</p>
+            
+            <p>After visiting long time friend time friend and pianist Dale Rene in Montana in the early 1990s, Donald Ray made his way to the city he now calls home, Calgary, Alberta, where he’s settled and has since made his mark on the Canadian blues scene.</p><p><a href="https://www.donaldray.com" target="_blank" class="text-accent hover:text-yellow-300">www.donaldray.com</a></p>
+        </div>
+    </div>
+
+    <div id="bio-jack">
+        <div class="artist-container" id="jack-semple">
+            <h2>Jack Semple</h2>
+            <p>Semple grew up on a farm north of Regina, Saskatchewan. He started his musical career playing with various Regina-based bands, and later relocated to Toronto in the late 1980s to become the lead guitarist of The Lincolns, a popular funk and rhythm and blues band. He left the band after two years and returned to Regina to pursue a solo career and to spend more time with his family. After his move back to Regina, Semple contributed to television and music scores and appeared in the title role of Guitarman, a 1994 television movie. Semple also commenced a solo recording career that has resulted in the release of ten albums. In 1992, Semple came to national prominence through winning the MuchMusic “Guitar Wars” contest. Semple has been twice nominated, in 1999 and 2000, for a Gemini Award for his soundtrack work on the television series Incredible Story Studio. Semple won a Juno award in 1991 for best roots recording. He has won two Western Canadian music awards for “Qu’Appelle” and “In the Blue Light”. Semple continues to perform as a solo artist and with The Jack Semple Band, across Canada and now being championed across America!</p>
+            <p>Jack Semple writes and performs “Modern Blues” without forgetting where he came from. He is an epic guitarist and a soulful singer. His music is like Stevie Ray Vaughn meets James Brown meets Robben Ford. He is a Juno Award winner and Western Canadian Music Award winner.</p>
+            <p><a href="https://www.jacksemple.com" target="_blank" class="text-accent hover:text-yellow-300">www.jacksemple.com</a></p>
+        </div>
+    </div>
+
+    <div id="bio-harry">
+        <div class="artist-container" id="harry-manx">
+            <h2>Harry Manx</h2>
+            <p>“Mysticssippi” blues man Harry Manx has been called an “essential link” between the music of East and West, creating musical short stories that wed the tradition of the Blues with the depth of classical Indian ragas. He has created a unique sound that is hard to forget and deliciously addictive to listen to.</p>
+            <p>Harry forged his distinctive style by studying at the feet of the masters, first as a sound man in the blues clubs of Toronto during his formative years and then under a rigorous tutelage with Vishwa Mohan Bhatt in India. Bhatt is the inventor of the 20-stringed Mohan Veena, which has become Harry’s signature instrument.</p>
+            <p>Born on the Isle of Man, Manx immigrated to Ontario with his parents when he was a child. He started working with bands as a ‘roadie’ at age 15 and gradually worked his way up to becoming the regular sound man at the well-known El Mocambo (blues) club in Toronto. There he worked with a slew of blues legends. Harry admits that blues is still at the heart of much of his work. “I’ve always had one foot in the blues from those days … what I got from those artists is a groove. That’s what I’m particularly interested in is the groove, and that’s the way I play blues”. “I went to Europe when I was 20 and started making money as a busker,” recalls Manx. “I’ve worked mostly as a musician since then, though I did some theatre work for a while. I was a one-man band with drums and cymbals for a time too. It was really a lot of fun”</p>
+            <p>The journey has been great so far.” Manx is a prolific artist, releasing 12 albums in a 12 year span with no signs of stopping. He has received seven Maple Blues Awards, six Juno nominations, the Canadian Folk Music Award in 2005 for Best Solo Artist and won CBC Radio’s “Great Canadian Blues Award” in 2007.</p>
+            <p>His most recent original release, “Om Suite Ohm” was voted by the Montreal daily La Presse as one of only 4 CDs to watch for in 2013. Guitar Player Magazine called it “his most fully realized work to date”. Blend Indian folk melodies with slide guitar blues, add a sprinkle of gospel and throw in some compelling grooves. It’s a recipe that goes down easy and leaves you hungry for more.</p>
+            <p><a href="https://www.harrymanx.com" target="_blank" class="text-accent hover:text-yellow-300">harrymanx.com</a></p>
+        </div>
+    </div>
+
+    <div id="bio-andrew">
+        <div id="andrew-michael-band" class="artist-container">
+            <h2>Andrew Michael Band</h2>
+            <p>Led by Andrew Michael Zaghloul, winner of the 2024 Fraser Valley Music Awards Blues Artist of the Year, the Andrew Michael Blues Band is a live n' electric blues rock group based out of the Fraser Valley BC. Performing their original blues rock music and some of the best British and American blues covers, this high energy band brings elements of Colin James, Cream and ZZ Top to audiences of all ages. The Andrew Michael Blues Band has been making it's name playing across the Fraser Valley and Greater Vancouver area, with major shows this year at the Chilliwack Ribfest, Abbotsford Agrifair Main Stage opening for Tom Lavin, and upcoming Harrison Hot Springs Bands on the Beach. Backed by Don Addley on harmonica, Ron Johnson on bass and Kevin Rush on drums, the Andrew Michael Blues Band will keep you dancing!</p>
+            <p><a href="https://andrewmichaelbluesband.com" target="_blank" class="text-accent hover:text-yellow-300">andrewmichaelbluesband.com</a></p>
+        </div>
+    </div>
+
+    <div id="bio-brandon">
+        <div class="artist-container" id="brandon-isaak-band">
+            <h2>Brandon Isaak Band</h2>
+            <p>A dash of Taj Mahal, a sprinkle of B.B. King and a few drops of Lighting Hopkins: stir it up, simmer on low and you have a recipe that sounds like Brandon Isaak. </p>
+            <p>Crowds always leave Brandon’s shows with a smile on their face and a need to come back for more. This Yukon born songster performs a mixture of thoughtful, humorous, spiritual and catchy memorable songs; always delivered with world class guitar, harmonica and vocals. Lyrics are paramount and it’s obvious when you see his accolades and hear his music. After 35 years in the business, this international touring artist is always asked back as he’s a total pro off and on the stage. If you like top notch blues, hard hitting lyrics and great night of entertainment, Brandon Isaak is your man. </p>
+            <p>Brandon Isaak is a one of a kind world class roots and blues showman ! He engages with an audience, getting them involved and part of the show. New fans are made at every show as they leave the venue still singing catchy lines and humming new melodies. Brandon is a multi-instrumentalist who writes heartfelt, uplifting, funny and spiritual songs. This Yukon born artist takes his audiences on an emotional journey through the varieties of his original songs. He has honed his craft over the past 37 years and it shows every night. His gravelly singing voice always astounds people that wonder how that big voice comes out of his smaller frame! He has played in three continents and 8 country’s, as well as 13 European tours. </p>
+            <p>Brandon has been nominated for many awards including Maple Blues for song writing of the year, blues act of the year, producer of the year, guitar player of the year, album of the year . He also has 2 Juno nominations under his belt.</p>
+            <p><a href="https://www.brandonisaak.com" target="_blank" class="text-accent hover:text-yellow-300">www.brandonisaak.com</a></p>
+        </div>
+    </div>
+
+    <div id="bio-samantha">
+        <div class="artist-container" id="samantha-king-band">
+            <h2>Samantha King Band</h2>
+            <p>Get ready—Edmonton’s dynamo blues voice, Samantha King, takes the stage for a time of raw emotion, soul-stirring vocals, and electrifying blues energy you can feel in your bones. Juno Award Nominee (2025) for Blues Album of the Year—a testament to her powerful debut album and Samantha’s commanding presence on the Canadian blues landscape. Praised as “Alberta Blues Royalty”, Samantha’s music is fueled by authenticity. Her voice resonates with passion and grit—the perfect match for blues lovers and newcomers alike.</p>
+            <p>Since launching her debut album in May 2024—self-titled and self-funded, with guests like Steve Marriner and Jesse O’Brien—Samantha King & The Midnight Outfit have conquered festival stages across Alberta: from the Edmonton International Blues Festival to the Calgary Blues Festival, and showcased at the Arts Touring Alliance of Alberta in 2024. The album was crafted with heart—recorded in St. Albert at Dominelli Studios, with Samantha and Marc Beaudin as executive producers, and shaped by collaborators Sandro Dominelli and Louis Sedmak. Witness live the voice behind a Juno-nominated blues album—a special milestone in Canadian blues history. Be primed to enjoy a spirited, high energy musical set that’ll linger long after the last melody fades.</p>
+            <p><a href="https://www.samanthakingoutfit.com/" target="_blank" class="text-accent hover:text-yellow-300">www.samanthakingoutfit.com</a></p>
+        </div>
+    </div>
+
+    <div id="bio-russell">
+        <div class="artist-container" id="russell-jackson-band">
+            <h2>Russell Jackson Band</h2>
+            <p>The Rell B. Jackson<br>The Groove Guru<br>“Find the pocket, play the groove, and you get the calls.”</p>
+            <p>The Groove Guru<br>“Find the pocket, play the groove, and you get the calls.”</p>
+            <p>Russell Jackson has more than five decades under his belt as a master of both acoustic and electric bass. He’s fluent in many styles and was the first to employ the slap bass in a blues context, over time earning the moniker, “the Groove Guru”. A disciple of the legendary Willie Dixon, Russell continues to champion the tradition of the stand-up bass.</p>
+            <p>Memphis born, as a young man Russell Jackson moved to Chicago to hone his craft. He was soon hired by one of the blues city’s greats, vocalist Otis Clay. During this time, he was spotted by none other than Mr. B.B. King, who invited him to join the B.B. King Orchestra. He spent the next seven years travelling the world with the legendary ‘Ambassador of the Blues’. Memorable moment include performing with the B.B. King Band for a New Year's Eve (2016) television production of Austin City Limits, and the induction of B.B. into the Austin City Limits Hall of Fame.</p>
+            <p>Russell is a highly sought after educator who teaches in workshop settings and privately. His master classes are available locally or online. Teaching credits include the Hornby Island Blues Camp (2012, 2013, 2024), the Tom Lee School of Music (1997-99), Master Classes for the Blues Foundation’s International Blues Challenge (2017-20), among the many.</p>
+            <p>Russell’s been sought out to be a Music Director in a number of settings, including his work with Touring Chicago Bluesfest from 2005-10 that featured Willie Hayes, Shakura S’Aida, Tasha Taylor, Wayne Baker Brooks, Kenny “Blues Boss” Wayne, Eddie Taylor Jr. Wilbert Crosby, James Armstrong, Sandra Hall, D.C.</p>
+            <p><a href="https://www.russellbjackson.com" target="_blank" class="text-accent hover:text-yellow-300">www.russellbjackson.com</a></p>
+        </div>
+    </div>
+
+    <div id="bio-graham">
+        <div class="artist-container" id="graham-guest">
+            <h2>Graham Guest</h2>
+            <p>Making his home in Edmonton since early boyhood, Graham Guest has spent nearly all of his years playing music. A keyboard player since toddlerdom, Graham has continued to develop his musical sensibilities in the arenas of singing, songwriting, arranging, and band leading, as well as by gratifying his enthusiasm for learning to play a multitude of instruments.</p>
+            <p>In addition to his own projects, Graham has travelled internationally with roots music luminaries of all stripes, performing and/or recording with artists ranging from Lazy Lester to the Rockin’ Highliners, from the Swiftys to Billy Boy Arnold, all the while holding down the keyboard chair in the band of Juno award winner Sue Foley.</p>
+            <p>In 2023 Graham was inducted into the Edmonton Blues Hall of Fame. Graham has been a mainstay on the stage at the Edmonton Blues Festival. In 2024 The Graham Guest Band released their album Tragic Magic. His performance at the 2025 Saskatoon Blues Festival was legendary! Graham along with his band and fans are enthusiastic about the release of their live album which was recorded over 2 nights in the spring of 2024 at the Edmonton Yardbird Suite.</p>
+        </div>
+    </div>
+
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.onclick = () => menu.classList.toggle('hidden');
+
+            const modal = document.getElementById('bio-modal');
+            const mTitle = document.getElementById('modal-title');
+            const mContent = document.getElementById('modal-content');
+            
+            document.querySelectorAll('.open-modal').forEach(b => {
+                b.onclick = () => {
+                    mTitle.innerText = b.dataset.title;
+                    mContent.innerHTML = document.getElementById(b.dataset.content).innerHTML;
+                    modal.classList.remove('hidden');
+                    document.body.classList.add('modal-open');
+                }
+            });
+
+            const close = () => { modal.classList.add('hidden'); document.body.classList.remove('modal-open'); };
+            document.getElementById('close-modal').onclick = close;
+            modal.onclick = (e) => { if(e.target === modal) close(); };
+        });
+    </script>
 </body>
 </html>
