@@ -131,7 +131,7 @@
             <h1 class="font-heading text-5xl sm:text-7xl font-bold tracking-wide text-white">CAMROSE <span class="text-accent">BLUES</span> FESTIVAL</h1>
             <p class="mt-4 text-xl text-gray-200 font-light">JULY 17-19, 2026 | THE BAILEY THEATRE</p>
             <div class="mt-8">
-                <a href="https://baileytheatre.com" target="_blank" class="btn-cta text-lg py-3 px-10 rounded-lg uppercase tracking-wider shadow-lg inline-block" style="display: none;" >Tickets available soon</a>
+                <a href="#" target="_blank" class="btn-cta text-lg py-3 px-10 rounded-lg uppercase tracking-wider shadow-lg inline-block" style="display: ;" >Tickets available soon</a>
             </div>
         </div>
     </section>
@@ -291,11 +291,14 @@
     <section class="py-12 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="font-heading text-2xl font-bold mb-8 text-primary">Sponsors</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60 grayscale">
-                <div class="p-4 border border-gray-300 rounded text-gray-500 font-bold">TBA</div>
-                <div class="p-4 border border-gray-300 rounded text-gray-500 font-bold">TBA</div>
-                <div class="p-4 border border-gray-300 rounded text-gray-500 font-bold">TBA</div>
-                <div class="p-4 border border-gray-300 rounded text-gray-500 font-bold">TBA</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                <div>
+                    <img src="montecarlo.png" alt="Monte Carlo" class="w-full h-auto">
+                </div>
+                <div>
+                    <img src="meridian.png" alt="Meridian" class="w-full h-auto">
+                </div>
+                <div class="text-gray-500 font-bold">TBA</div>
             </div>
         </div>
     </section>
@@ -419,11 +422,33 @@
     <section class="py-16 bg-dark-alt text-white">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="font-heading text-3xl text-center mb-10 text-accent">What Fans Are Sayings </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 italic">
-                <div class="bg-gray-800 p-6 rounded shadow-lg border-l-4 border-accent">"TEXT GOES HERE" <br><span class="font-bold text-accent not-italic block mt-2">— Sarah L.</span></div>
-                <div class="bg-gray-800 p-6 rounded shadow-lg border-l-4 border-accent">"TEXT GOES HERE" <br><span class="font-bold text-accent not-italic block mt-2">— David M.</span></div>
-                <div class="bg-gray-800 p-6 rounded shadow-lg border-l-4 border-accent">"TEXT GOES HERE" <br><span class="font-bold text-accent not-italic block mt-2">— Mike J.</span></div>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 italic" id="testimonials-container"></div>
+
+            <script>
+                const testimonials = [
+                    { quote: "What an amazing event last night! We thoroughly enjoyed it, wish we could've stayed for the entire weekend", author: "Greg O." },
+                    { quote: "Wow what a fun, blues filled festival. And what about The Bailey? An incredible venue with such a history. So appropriate for a blues festival", author: "Cathie H." },
+                    { quote: "Camrose blues festival. Awesome room to host blues events, friendly atmosphere. Very friendly, helpful staff. Buy your tickets early cause it will sell out. See you there", author: "Wayne T." },
+                    { quote: "For a small city, it was the best indoor blues festival we've ever been to, well done Camrose!", author: "Curt S." },
+                    { quote: "We really enjoyed our weekend at the Camrose Blues festival, already looking forward to a second one. The venue is such an intimate size", author: "Tracy B." },
+                    { quote: "It is a must-visit for blues purists who value sound quality and a comfortable, historical setting over the muddy chaos of larger festival", author: "Karl S." },
+                    { quote: "The Cats were noodling and jamming as their axes vibed and burned. A smokin weekend that filled my soul with memories and music", author: "Monique J." }
+                ];
+
+                function displayRandomTestimonials() {
+                    const container = document.getElementById('testimonials-container');
+                    const shuffled = testimonials.sort(() => 0.5 - Math.random()).slice(0, 3);
+                    
+                    container.innerHTML = shuffled.map(t => `
+                        <div class="bg-gray-800 p-6 rounded shadow-lg border-l-4 border-accent">
+                            "${t.quote}" 
+                            <span class="font-bold text-accent not-italic block mt-2">— ${t.author}</span>
+                        </div>
+                    `).join('');
+                }
+
+                displayRandomTestimonials();
+            </script>
         </div>
     </section>
 
@@ -438,7 +463,7 @@
                 <p class="font-heading text-2xl font-bold text-primary mb-4">Organizing Committee</p>
                 <p class="mt-8">
                     
-                    <img src="blues-committee.jpg" alt="Camrose Blues Festival Committee - Left to Right: Elliot Harder (Bailey Theatre Manager), Jane Cherry, Robert Renman, Kelly Olafson, John Person, Barb Stroh, David Roth. Not in photo: Chris Rebus, Roxane Renman and Jan Nowakowski" class="w-full rounded-lg shadow-lg">
+                    <img src="bluescommittee.jpg" alt="Camrose Blues Festival Committee - Left to Right: Elliot Harder (Bailey Theatre Manager), Jane Cherry, Robert Renman, Kelly Olafson, John Person, Barb Stroh, David Roth. Not in photo: Chris Rebus, Roxane Renman and Jan Nowakowski" class="w-full rounded-lg shadow-lg">
                     <p class="text-sm text-gray-600 mt-2">
                         <strong>Left to Right:</strong> Elliot Harder (Bailey Theatre Manager), Jane Cherry, Robert Renman, Kelly Olafson, John Person, Barb Stroh, David Roth<br>
                         <strong>Not in photo:</strong> Chris Rebus, Roxane Renman, Jan Nowakowski
