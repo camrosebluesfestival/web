@@ -25,7 +25,7 @@
             --color-primary: #264865;
             --color-dark-alt: #1F2937;
             --color-accent: #f90;
-            --color-accent2: rgba(247, 189, 101, 0.83);
+            --color-accent2: #FBBF24;
             --color-text-light: #F9FAFB;
         }
 
@@ -46,6 +46,7 @@
         .text-accent { color: var(--color-accent); }
         .bg-accent { background-color: var(--color-accent); }
         .bg-primary { background-color: var(--color-primary); }
+        .bg-accent2 { background-color: var(--color-accent2); }
         .bg-dark-alt { background-color: var(--color-dark-alt); }
 
         .btn-cta {
@@ -54,10 +55,43 @@
             transition: all 0.3s ease;
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
+            text-decoration: none;
+            border: 1px solid var(--color-primary);
         }
+       .btn-cta2 {
+            background-color:#264865;
+            color:white;);
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid var(--color-primary);
+        }  
+   
+        .btn-cta2:hover {
+            background-color: blue;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }          
 
         .btn-cta:hover {
             background-color: #FBBF24;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-ticket {
+            background-color: var(--color-primary);
+            color: white;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid var(--color-primary);
+        }
+
+        .btn-ticket:hover {
+            background-color: #1a2e3f;
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         }
@@ -117,7 +151,7 @@
 
 <body class="bg-white">
 
-    <a href="https://baileytheatre.com" target="_blank" class="md:hidden fixed bottom-6 right-6 z-[60] bg-accent text-primary w-16 h-16 rounded-full flex items-center justify-center shadow-2xl pulse">
+    <a href="#tickets" target="_self" class="md:hidden fixed bottom-6 right-6 z-[60] bg-accent text-primary w-16 h-16 rounded-full flex items-center justify-center shadow-2xl pulse">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
         </svg>
@@ -140,7 +174,7 @@
                     <a href="#faq" class="nav-link text-white">FAQ</a>
                     <a href="#contact" class="nav-link text-white">Contact</a>
                 </nav>
-                <a style="display: none;" href="https://baileytheatre.com" target="_blank" class="hidden md:block btn-cta py-2 px-5 rounded-md text-sm uppercase tracking-wide">Tickets</a>
+                <a style="display:block;" href="#tickets" target="_self" class="hidden md:block btn-cta py-2 px-5 rounded-md text-sm uppercase tracking-wide">Tickets</a>
                 <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
@@ -168,7 +202,7 @@
             <h1 class="font-heading text-5xl sm:text-7xl font-bold tracking-wide text-white">CAMROSE <span class="text-accent">BLUES</span> FESTIVAL</h1>
             <p class="mt-4 text-xl text-gray-200 font-light">JULY 17-19, 2026 | THE BAILEY THEATRE</p>
             <div class="mt-8">
-                <a href="#" target="_self" class="btn-cta text-lg py-3 px-10 rounded-lg uppercase tracking-wider shadow-lg inline-block" >Tickets available soon</a>
+                <a href="#tickets" target="_self" class="btn-cta text-lg py-3 px-10 rounded-lg uppercase tracking-wider shadow-lg inline-block" >Buy Tickets</a>
             </div>
         </div>
     </section>
@@ -325,6 +359,57 @@
         </div>
     </section>
 
+    <section id="tickets" class="py-16 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="font-heading text-4xl font-bold text-center mb-12 text-primary">Get Your Tickets</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <div class="bg-accent2 p-6">
+                        <h3 class="font-heading text-2xl font-bold text-primary">2026 Kickoff</h3>
+                        <p class="text-primary font-semibold">Thu July 16, 2026</p>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700">Join us for the Festival Kickoff Party featuring live performances by local bands. Pay what you feel!</p>
+                        <a href="https://purchase.baileytheatre.ca/ChooseSeats/28401" target="_blank" class="btn-cta2 py-3 px-6 rounded-lg font-bold uppercase tracking-wide inline-block mt-4 text-center">Buy Tickets</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <div class="bg-accent2 p-6">
+                        <h3 class="font-heading text-2xl font-bold text-primary">Festival Pass VIP</h3>
+                        <p class="text-primary font-semibold">Fri July 17, 2026</p>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700">Premium access to all three days of the festival with exclusive VIP benefits.</p>
+                        <a href="https://purchase.baileytheatre.ca/ChooseSeats/28201" target="_blank" class="btn-cta2 py-3 px-6 rounded-lg font-bold uppercase tracking-wide inline-block mt-4 text-center">Buy Tickets</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <div class="bg-accent2 p-6">
+                        <h3 class="font-heading text-2xl font-bold text-primary">Festival Pass</h3>
+                        <p class="text-primary font-semibold">Fri July 17, 2026</p>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700">Three-day festival pass with access to all performances and events.</p>
+                        <a href="https://purchase.baileytheatre.ca/ChooseSeats/28601" target="_blank" class="btn-cta2 py-3 px-6 rounded-lg font-bold uppercase tracking-wide inline-block mt-4 text-center">Buy Tickets</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <div class="bg-accent2 p-6">
+                        <h3 class="font-heading text-2xl font-bold text-primary">Blues Brunch</h3>
+                        <p class="text-primary font-semibold">Sun July 19, 2026</p>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700">Join us Sunday morning for brunch and live performances by Graham Guest Trio.</p>
+                        <a href="https://purchase.baileytheatre.ca/ChooseSeats/27402" target="_blank" class="btn-cta2 py-3 px-6 rounded-lg font-bold uppercase tracking-wide inline-block mt-4 text-center">Buy Tickets</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-12 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="font-heading text-2xl font-bold mb-8 text-primary">Sponsors</h2>
@@ -343,10 +428,10 @@
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 text-center mt-12">
+        <div class="max-w-5xl mx-auto px-4 text-center mt-12">
             <div class="mt-12 pt-8 border-t border-gray-300">
             <h3 class="text-xl font-bold mb-4"> Interested in sponsoring the Camrose Blues Festival?</h3>
-            <p class="text-lg font-bold mb-4 p-4 bg-[lightblue] text-black rounded-lg border-l-4 border-accent">
+            <p class="text-lg font-bold mb-4 p-8 bg-[lightblue] text-black rounded-lg border-l-4 border-accent">
                 <span class="block text-xl mb-2">🎸 Challenge Gift Alert! 🎸</span>
                 Brian and Colleen Nelson, longtime supporters of live music and The Bailey Theatre Society, have put out a challenge. They invite potential donors to match their gift of <i>$2000</i> or a contribution of your choice towards The Camrose Blues Festival.
             </p>
@@ -592,7 +677,7 @@
 
                 <details class="group bg-white rounded p-4 shadow cursor-pointer">
                     <summary class="font-bold flex justify-between items-center list-none">Where do I buy tickets? <span class="transition-transform group-open:rotate-180">▼</span></summary>
-                    <p class="mt-4 text-gray-600">Tickets are available at the Bailey Theatre Box office, the <a href="https://baileytheatre.com" target="_blank" class="text-accent hover:text-yellow-300 underline">Bailey Theatre website</a> and also through the <a href="https://camrosebluesfestival.ca" target="_blank" class="text-accent hover:text-yellow-300 underline">festival's website</a></p>
+                    <p class="mt-4 text-gray-600">Tickets are available at the Bailey Theatre Box office, the <a href="https://purchase.baileytheatre.ca/Events" target="_blank" class="text-accent hover:text-yellow-300 underline">Bailey Theatre website</a> and also through the <a href="https://camrosebluesfestival.ca" target="_blank" class="text-accent hover:text-yellow-300 underline">festival's website</a></p>
                 </details>
 
                 <details class="group bg-white rounded p-4 shadow cursor-pointer">
